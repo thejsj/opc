@@ -1,0 +1,65 @@
+/*---------------------------------------------------------------------------
+    LESS MIXINS
+---------------------------------------------------------------------------*/
+
+/* Without Variables
+----------------------------------------*/  
+.inline-block {
+	display: -moz-inline-stack;
+	display: inline-block;
+	zoom: 1;
+	*display: inline;
+}
+.unstyled { 
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+.box-reset {
+    -moz-box-sizing: border-box; 
+    -webkit-box-sizing: border-box; 
+    box-sizing: border-box;	
+}
+.border-circle {
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-ms-border-radius: 50%;
+	-o-border-radius: 50%;
+	border-radius: 50%;	
+}
+
+
+/* With Variables
+----------------------------------------*/  
+.rounded (@radius: 5px) {
+	-webkit-border-radius: @radius;
+	-moz-border-radius: @radius;
+	-ms-border-radius: @radius;
+	-o-border-radius: @radius;
+	border-radius: @radius;
+}
+.border-radius (@topLeft: 5px, @topRight: 5px, @bottomRight: 5px, @bottomLeft: 5px) {
+	-webkit-border-radius: @topLeft, @topRight, @bottomRight, @bottomLeft;
+	-moz-border-radius: @topLeft, @topRight, @bottomRight, @bottomLeft;
+	-ms-border-radius: @topLeft, @topRight, @bottomRight, @bottomLeft;
+	-o-border-radius: @topLeft, @topRight, @bottomRight, @bottomLeft;
+	border-radius: @topLeft, @topRight, @bottomRight, @bottomLeft;
+}
+.box-shadow (@x: 0, @y: 0, @blur: 1px, @color: #000) {
+	box-shadow: @arguments;
+	-moz-box-shadow: @arguments;
+	-webkit-box-shadow: @arguments;
+}
+.opacity(@opacity: 1) {
+	@ieOpacity: @opacity * 100;
+	-ms-filter: ~"progid:DXImageTransform.Microsoft.Alpha(Opacity=@{ieOpacity})";
+	filter: ~"alpha(opacity=@{ieOpacity})";
+	opacity: @opacity;
+}
+.transition (@prop: all, @time: 1s, @ease: linear) {
+	-webkit-transition: @prop @time @ease;
+	-moz-transition: @prop @time @ease;
+	-o-transition: @prop @time @ease;
+	-ms-transition: @prop @time @ease;
+	transition: @prop @time @ease;
+}

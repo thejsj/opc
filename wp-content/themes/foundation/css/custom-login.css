@@ -1,0 +1,11 @@
+/* CUSTOM LOGIN STYLES
+----------------------------------------------------------------------------- */
+body.login { background: #f9f9f9; }
+.login h1 a { background: url("http://placehold.it/312x125") no-repeat scroll center transparent; background-size: auto; height: 125px; width: 312px;}
+.login h1 a { display: block; overflow: hidden; padding-bottom: 25px; text-indent: -9999px; margin-left: 8px; }
+.login form {}
+.login label {}
+.login form .input {}
+.login #nav, .login #backtoblog { text-align: center; margin: 0 0 0 8px; }
+.login #nav a, .login #backtoblog a {}
+.login form .input {}   
