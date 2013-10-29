@@ -28,8 +28,8 @@
 						</h3>
 						<div class="post-info">
 							<!-- Date, Author and Categories -->
-							<?php the_date( 'm/j/y', 'Publicado: ' ); ?> <?php echo opc_get_the_author($post->post_author, 'por '); ?>  
-							<p>Categorias: <?php the_category(', '); ?></p>
+							<?php the_date( 'j/m/y', 'Publicado: ' ); ?> <?php echo opc_get_the_author($post->post_author, 'por '); ?>  
+							<?php echo_the_categories(); ?>
 						</div>
 						<div class="post-images nav-type-small span2">
 							<?php $images = get_acf_gallery_images(get_the_ID()); ?>

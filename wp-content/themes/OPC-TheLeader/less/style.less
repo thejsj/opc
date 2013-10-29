@@ -173,6 +173,19 @@ input[type=color]:focus,
 .price
 { color: #EE3B3B; }
 
+p {
+	line-height: 2.1em; 
+}
+
+.blog-post .post-info {
+	color: #666; 
+	text-transform: uppercase; 
+	letter-spacing: 0.1em;
+	font-size: 11px;
+}
+
+
+
 /* ---------------------------
 
 	Header
@@ -189,9 +202,24 @@ header.header1 {
 
 --------------------------- */
 
+.home-container {
+	.all-posts {
+		article:last-child {
+			border-bottom: 0px;
+		}
+	}
+}
+
+.comunicados-title {
+	color: #EE3B3B;
+}
+
 .blog-post {
 	.post-description {
 		font-size: 15px;
+		p {
+			margin-bottom: 15px;
+		}
 	}
 	&.linear-layout {
 		.post-images {
@@ -200,6 +228,7 @@ header.header1 {
 			img {
 				border: solid 1px #ccc;
 				box-sizing: border-box;
+				
 			}
 		}
 	}
@@ -207,13 +236,15 @@ header.header1 {
 		.post-images {
 			img {
 				border: solid 1px #ccc;
+				box-sizing: border-box !important;
 			}
 		}
 	}
 }
 
+// Sponsors Box
+
 .all-sponsors {
-	
 	.sponsor-container {
 		h3 {
 			color: #555; 
@@ -234,6 +265,8 @@ header.header1 {
 	}
 }
 
+// Gray Box used by Sponsors
+
 .gray-box {
 	background-color: #eee; 
 	border: solid 1px #aaa; 
@@ -245,7 +278,10 @@ header.header1 {
 }
 
 .video-container {
-	border-top: solid 1px #666;
+	border-top: solid 1px #f2f2f2;
+	h3 {
+		color: #EE3B3B;
+	}
 	.single-video.span3 {
 		h4 {
 			font-color: #aaa; 
@@ -255,28 +291,6 @@ header.header1 {
 			margin-left: 0px;
 		}
 	}
-}
-
-.content.text-center {
-	margin-right: auto; 
-	margin-left: auto;
-	float: none; 
-	&:first-child {
-		margin-right: auto; 
-		margin-left: auto;
-		float: none; 
-	}
-}
-
-.communicado {
-	.featured-image {
-		border: solid 1px #e7e7e7;
-	}
-}
-
-.radio-show-file {
-	margin-top: 20px; 
-	margin-bottom: 20px;
 }
 
 .social-media-link {
@@ -290,6 +304,43 @@ header.header1 {
 	}
 }
 
+
+/*
+
+	Overwrite bootstrap
+
+*/
+
+.content.text-center {
+	margin-right: auto; 
+	margin-left: auto;
+	float: none; 
+	&:first-child {
+		margin-right: auto; 
+		margin-left: auto;
+		float: none; 
+	}
+}
+
+.blog-post.post-grid {
+	.post-information {
+		border-top: 1px;
+	}
+}
+
+
+.communicado {
+	.featured-image {
+		border: solid 1px #e7e7e7;
+	}
+}
+
+.radio-show-file {
+	margin-top: 20px; 
+	margin-bottom: 20px;
+}
+
+
 .block-link {
 	display: block;
 }
@@ -301,4 +352,27 @@ header.header1 {
 .fixed-header .menu ul > li:last-child > a,
 .main-nav .menu ul > li:last-child > a {
   border-bottom-width: 1px;
+}
+
+.download-links {
+	background-color: #f4f4f4; 
+	border: solid 1px #ccc; 
+	border-radius: 2px;
+	padding: 10px 20px;
+	width: 300px;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	a {
+		display: block;
+	}
+}
+
+.articles-nav {
+	text-align: center;
+	font-size: 18px;
+	.page-numbers {
+		margin-right: 3px;
+		margin-left: 3px;
+	}
 }

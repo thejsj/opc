@@ -438,27 +438,29 @@ include(TEMPLATEPATH . '/leader_functions.php');
 		return $feat_image;
 	}
 
-	function get_comminucado_download_links($post_id){
-		$return = array();
+	function echo_comminucado_download_links($post_id){
 		// Get PDF
-		if(get_post_meta($post_id, 'pdf_file', true)){
-			$pdf = new stdClass();
-			$pdf->href = wp_get_attachment_url(get_post_meta($post_id, 'pdf_file', true));
-			$pdf->type = 'pdf';
-			array_push($return, $pdf);
-		}
-		// Get Image Link
 		if(get_post_meta($post_id, 'image_file', true)){
 			$image = new stdClass();
 			$image->href = wp_get_attachment_url(get_post_meta($post_id, 'image_file', true));
 			$image->type = 'image';
-			array_push($return, $image);
 		}
-		if(count($return) > 0){
-			return $return;
+		// Get Image Link
+		if(get_post_meta($post_id, 'pdf_file', true)){
+			$pdf = new stdClass();
+			$pdf->href = wp_get_attachment_url(get_post_meta($post_id, 'pdf_file', true));
+			$pdf->type = 'pdf';
+			
 		}
-		else {
-			return false;
+		if(isset($pdf) || isset($image)){
+			echo '<div class="download-links gray-box">';
+			if(isset($pdf)){
+				echo '<a href="' . $image->href . '">Descargar Comunicado</a>';
+			}
+			if(isset($pdf)){
+				echo '<a href="' . $pdf->href . '">Descargar PDF</a>';
+			}
+			echo '</div>';
 		}
 	}
 
@@ -488,6 +490,12 @@ include(TEMPLATEPATH . '/leader_functions.php');
 		$image_ids = get_field('main_gallery', $post_id, false);
 		$shortcode = '[gallery ids="' . implode(',', $image_ids) . '"]';
 		return do_shortcode( $shortcode );
+	}
+
+	function echo_the_categories(){
+		if(count(get_the_category(get_the_ID())) > 0){
+			echo '<p>Categorías: '. get_the_category_list(', ', 'single', get_the_ID()) . '</p>';
+		}
 	}
 
 	function get_acf_gallery_images($post_id, $number_of_images = 5){

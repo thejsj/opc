@@ -15,7 +15,7 @@ get_header(); ?>
 				<?php $the_query = get_latest_communicados(); ?>
 				<!-- Show Posts -->
 				<?php if($the_query->have_posts()) : ?>		
-					<div class="">	
+					<div class="all-posts">	
 					<!-- Post List Begin -->
 					<?php while($the_query->have_posts()) : ?>
 						<?php $the_query->the_post(); ?> 						
@@ -26,7 +26,7 @@ get_header(); ?>
 						<div class="post-info">
 							<!-- Date, Author and Categories -->
 							<?php the_date( 'm/j/y', 'Publicado: ' ); ?> <?php echo opc_get_the_author($post->post_author, 'por '); ?>  
-							<p>Categorias: <?php the_category(', '); ?></p>
+							<?php echo_the_categories();?>
 						</div>
 						<div class="post-images nav-type-small span2">
 							<a href="<?php the_permalink(); ?>">

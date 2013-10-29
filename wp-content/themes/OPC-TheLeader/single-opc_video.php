@@ -23,8 +23,8 @@
 								</div>
 								<div class="post-info">
 									<!-- Date, Author and Categories -->
-									<?php the_date( 'm/j/y', 'Publicado: ' ); ?> <?php echo opc_get_the_author($post->post_author, 'por '); ?>  
-									<p>Categorias: <?php the_category(', '); ?></p>
+									<?php the_date( 'j/m/y', 'Publicado: ' ); ?> <?php echo opc_get_the_author($post->post_author, 'por '); ?>  
+									<?php echo_the_categories(); ?>
 								</div>
 								<div class="post-description">
 									<?php the_content(); ?>

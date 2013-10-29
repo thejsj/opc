@@ -23,14 +23,17 @@
 					<?php the_post(); ?> 						
 					<article class="post-<?php the_ID(); ?> post type-post status-publish format-standard hentry category-uncategorized blog-post post-grid span4 isotope-item" id="post-<?php the_ID(); ?>">
 						<div class="post-images">
+							<?php if(get_communicados_featured_image(get_the_ID(), 'small')): ?>
 							<a href="<?php the_permalink(); ?>">
 								<img src="<?php echo get_communicados_featured_image(get_the_ID(), 'small'); ?>" alt='<?php the_title();?>'>
 							</a>
+							<?php endif; ?>
 							<div class="blog-mask">
 								<div class="mask-content">
 									<a href="<?php the_permalink(); ?>"><i class="icon-link"></i></a>
 								</div>
 							</div>
+							
 						</div>	
 						<div class="post-information ">
 							<h4 class="post-title">
@@ -38,8 +41,7 @@
 							</h4>
 							<div class="post-info">
 								<span class="posted-on">Posted on October 24, 2013 at 3:45 am</span> 
-								<span class="posted-by"> by <a href="http://localhost/~jorgesilva/2013/the_leader_theme/?author=1" title="Posts by admin" rel="author">admin</a></span>
-				 / <a href="http://localhost/~jorgesilva/2013/the_leader_theme/?p=22#respond" class="post-comments-count" title="Comment on Example">0</a>		
+								<span class="posted-by"> by <?php the_author(); ?>	
 							</div>
 							<div class="post-description"><?php the_excerpt(); ?></div>
 							<div class="clear"></div>

@@ -30,11 +30,12 @@
 										<div class='content span6'>
 											<div class="post-info">
 												<!-- Date, Author and Categories -->
-												<?php the_date( 'm/j/y', 'Publicado: ' ); ?> <?php echo opc_get_the_author($post->post_author, 'por '); ?>  
-												<p>Categorias: <?php the_category(', '); ?></p>
+												<?php the_date( 'j/m/y', 'Publicado: ' ); ?> <?php echo opc_get_the_author($post->post_author, 'por '); ?>  
+												<?php echo_the_categories(); ?>
 											</div>
 											<div class="post-description">
 												<?php the_content(); ?>
+												<?php echo_comminucado_download_links(get_the_ID()); ?>
 											</div>
 										</div>
 									</div>
@@ -45,11 +46,13 @@
 							<div class="content span10 text-center">
 								<div class="post-info">
 									<!-- Date, Author and Categories -->
-									<?php the_date( 'm/j/y', 'Publicado: ' ); ?> <?php echo opc_get_the_author($post->post_author, 'por '); ?>  
-									<p>Categorias: <?php the_category(', '); ?></p>
+									<?php the_date( 'j/m/y', 'Publicado: ' ); ?> <?php echo opc_get_the_author($post->post_author, 'por '); ?>  
+									<?php echo_the_categories(); ?>
 								</div>
 								<div class="post-description">
 									<?php the_content(); ?>
+									<p>Descargar</p>
+									<?php var_dump(get_comminucado_download_links(get_the_ID())); ?>
 								</div>
 							</div>
 						<?php endif; ?>
