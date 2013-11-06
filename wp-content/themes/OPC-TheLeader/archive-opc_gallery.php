@@ -56,7 +56,7 @@
 					</div>
 				<?php else : ?>
 					<h2>Sorry!</h2>
-					<p>No posts have been published just yet.</p>	
+					<p>No galleries have been published just yet.</p>	
 				<?php endif;?>
 			</div>
 		</div>

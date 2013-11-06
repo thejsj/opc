@@ -27,7 +27,11 @@
 				<div class="container">
 					<div class="logo">                    
 						<a href="<?php bloginfo('url'); ?>">
-							<img id="main-logo-img" src="<?php bloginfo('template_url'); ?>/img/Overseas-Press-Club-Puerto-Rico-Logo-200.png" alt="<?php bloginfo('name'); ?>">
+							<?php if(get_custom_text('logo_image', false)): ?>
+								<img id="main-logo-img" style="width: <?php echo get_custom_text('logo_image_width'); ?>px;" src="<?php echo get_custom_text('logo_image'); ?>" alt="<?php bloginfo('name'); ?>">
+							<?php else: ?>
+								<img id="main-logo-img" src="<?php bloginfo('template_url'); ?>/img/Overseas-Press-Club-Puerto-Rico-Logo-200.png" alt="<?php bloginfo('name'); ?>">
+							<?php endif; ?>
 						</a>
 	        		</div>
 					<div class="menu-icon hidden-desktop"><i class="icon-reorder"></i></div>

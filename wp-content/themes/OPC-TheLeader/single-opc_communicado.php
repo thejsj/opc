@@ -52,7 +52,7 @@
 								<div class="post-description">
 									<?php the_content(); ?>
 									<p>Descargar</p>
-									<?php var_dump(get_comminucado_download_links(get_the_ID())); ?>
+									<?php echo_comminucado_download_links(get_the_ID()); ?>
 								</div>
 							</div>
 						<?php endif; ?>

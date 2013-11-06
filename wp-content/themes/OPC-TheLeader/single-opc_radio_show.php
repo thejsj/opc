@@ -18,16 +18,20 @@
 						<article class="post-<?php the_ID(); ?> post type-post status-publish format-standard hentry category-uncategorized blog-post communicado" id="post-<?php the_ID(); ?>">
 							<!-- Only Display content -->
 							<div class="content span6 text-center">
-								<div class='radio_show_file'>
-									<?php echo(get_radio_show_player(get_the_ID())); ?>
-								</div>
 								<div class="post-info">
 									<!-- Date, Author and Categories -->
 									<?php the_date( 'j/m/y', 'Publicado: ' ); ?> <?php echo opc_get_the_author($post->post_author, 'por '); ?>  
 									<?php echo_the_categories(); ?>
 								</div>
+								<div class='featured_image'>
+									<?php if ( has_post_thumbnail() ) { // check if the post has a Post Thumbnail assigned to it.
+										the_post_thumbnail(); } ?>
+								</div>
 								<div class="post-description">
 									<?php the_content(); ?>
+								</div>
+								<div class='radio_show_file'>
+									<?php echo(get_radio_show_player(get_the_ID())); ?>
 								</div>
 							</div>
 						</article>

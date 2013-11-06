@@ -42,16 +42,28 @@ include(TEMPLATEPATH . '/leader_functions.php');
         wp_enqueue_script('cbpQTRotator', get_template_directory_uri().'/js/jquery.cbpQTRotator.min.js',array(),false,true);
         wp_enqueue_script('nicescroll', get_template_directory_uri().'/js/jquery.nicescroll.min.js',array(),false,true);
         wp_enqueue_script('bootstrap', get_template_directory_uri().'/js/bootstrap.min.js',array(),false,true);
-
+        
 
 		// Load js plugins
 		wp_register_script('plugins', get_template_directory_uri()  . '/js/plugins.js', array('jquery'), '20130217', true);
 		wp_enqueue_script('plugins');
 		// Load js functions
 		wp_register_script('functions', get_template_directory_uri()  . '/js/functions.js', array('jquery'), '20130217', true);
-		wp_enqueue_script('functions');						
+		wp_enqueue_script('functions');		
+
+				
 	}
 	add_action( 'wp_enqueue_scripts', 'load_theme_scripts' );
+
+
+
+
+	function load_theme_amdin_scripts(){
+		wp_enqueue_script('media-upload');
+        wp_enqueue_media();		
+	}
+
+	add_action( 'admin_enqueue_scripts', 'load_theme_amdin_scripts' );
 		
 	// Add post thumbnail support and declare image sizes
 	add_theme_support('post-thumbnails');
@@ -151,6 +163,15 @@ include(TEMPLATEPATH . '/leader_functions.php');
 		'footer_menu' => 'Footer Menu'
 	) );
 
+	function filter_search($query) {
+		if(($query->is_search() || $query->is_category()) && 
+			(get_query_var('post_type') == 'post' || get_query_var('post_type') == 'page' || get_query_var('post_type') == '')) {
+			$query->set('post_type', array('post', 'page', 'opc_communicado', 'opc_gallery'));
+		};
+		return $query;
+	};
+	add_filter('pre_get_posts', 'filter_search');
+
 /* Custom Post Types
 ---------------------------------------------------------------------- */
 
@@ -203,7 +224,7 @@ include(TEMPLATEPATH . '/leader_functions.php');
 			'description' => 'OPC Radios Shows ("Lo que es Noticia") is OPC\'s weekly radio show. These contain a title, description and audio files input fields',
 			'public' => true,
 			'has_archive' => true,
-			'supports' => array('title','editor'),
+			'supports' => array('title','editor','thumbnail'),
 			'menu_position' => 7,
 			'show_in_nav_menus' => true,
 			)
@@ -228,6 +249,7 @@ include(TEMPLATEPATH . '/leader_functions.php');
 			'description' => 'Galleries contain a collecition of images with a title and a text field for description',
 			'public' => true,
 			'has_archive' => true,
+			'taxonomies' => array('category'),
 			// 'supports' => array('title','editor'),
 			'menu_position' => 5,
 			'show_in_nav_menus' => true,
@@ -450,11 +472,10 @@ include(TEMPLATEPATH . '/leader_functions.php');
 			$pdf = new stdClass();
 			$pdf->href = wp_get_attachment_url(get_post_meta($post_id, 'pdf_file', true));
 			$pdf->type = 'pdf';
-			
 		}
 		if(isset($pdf) || isset($image)){
 			echo '<div class="download-links gray-box">';
-			if(isset($pdf)){
+			if(isset($image)){
 				echo '<a href="' . $image->href . '">Descargar Comunicado</a>';
 			}
 			if(isset($pdf)){
@@ -532,7 +553,7 @@ include(TEMPLATEPATH . '/leader_functions.php');
   		}  		
   	}
 
-  	function get_custom_text($type){
+  	function get_custom_text($type, $return_fallback = true){
 		if($type == 'home_page_videos_title'){
 			if(get_site_option('home_page_videos_title') != ''){
 				return get_site_option('home_page_videos_title'); 
@@ -581,6 +602,28 @@ include(TEMPLATEPATH . '/leader_functions.php');
   				return "Auspiciadores titulares de oro"; 
   			}
   		}
+  		else if($type == 'logo_image'){
+  			if(get_site_option('logo_image') != ''){
+  				return get_site_option('logo_image'); 
+  			}
+  			else if($return_fallback){
+  				return get_bloginfo('template_url') . '/img/Overseas-Press-Club-Puerto-Rico-Logo-200.png';
+  			}
+  			else {
+  				return false;
+  			}
+  		}
+  		else if($type == 'logo_image_width'){
+  			if(get_site_option('logo_image_width') != ''){
+  				return get_site_option('logo_image_width'); 
+  			}
+  			else if($return_fallback){
+  				return '200';
+  			}
+  			else {
+  				return false;
+  			}
+  		}
   		else {
   			return get_site_option($type);
   		}  		
@@ -614,6 +657,8 @@ include(TEMPLATEPATH . '/leader_functions.php');
 		register_setting( 'opc-settings-group', 'home_page_sponsor_1' );
 		register_setting( 'opc-settings-group', 'home_page_sponsor_2' );
 		register_setting( 'opc-settings-group', 'home_page_sponsor_3' );
+		register_setting( 'opc-settings-group', 'logo_image' );
+		register_setting( 'opc-settings-group', 'logo_image_width' );
 	}
 
 	function opc_settings_page() {
@@ -669,7 +714,55 @@ include(TEMPLATEPATH . '/leader_functions.php');
 			<td><input type="text" name="home_page_sponsor_3" value="<?php echo get_option('home_page_sponsor_3'); ?>" /></td>
 			</tr>
 		</table>
-	    
+		
+		
+
+		
+		<h4>Logo</h4>
+		<table class="form-table">
+			<tr valign="top">
+				<th scope="row">Page Logo (Image on Header)</th>
+				<td>
+					<div id="logo-image-upload"class="uploader">
+						<input id="upload_image_logo_opc" type="text" name="logo_image" value="<?php echo get_option('logo_image'); ?>" />
+						<input type="button" class="button" name="logo_image_button" id="logo_image_button" value="Upload" />
+					</div>
+				</td>
+			</tr>
+			 
+			<tr valign="top">
+			<th scope="row">Logo Width (in pixels)</th>
+			<td><input  type="text" name="logo_image_width" value="<?php echo get_option('logo_image_width'); ?>" /></td>
+			</tr>
+		</table>
+	    <script>
+			jQuery(document).ready(function($){
+
+				var _custom_media = false,
+					_orig_send_attachment = wp.media.editor.send.attachment;
+
+				wp.media.editor.send.attachment = function(props, attachment){
+					console.log('attachment.url: ' + attachment.url);
+					$("#upload_image_logo_opc").val(attachment.url);
+					// if ( _custom_media ) {
+						
+					// } else {
+					// 	return _orig_send_attachment.apply( this, [props, attachment] );
+					// };
+				}
+				$('.uploader .button').click(function(e) {
+					var send_attachment_bkp = wp.media.editor.send.attachment;
+					var button = $(this);
+					var id = button.attr('id').replace('_button', '');
+					wp.media.editor.open(button);
+					return false;
+				});
+				// $('.add_media').on('click', function(){
+				// 	_custom_media = false;
+				// })
+			});
+
+	    </script>
 	    <?php submit_button(); ?>
 
 	</form>
