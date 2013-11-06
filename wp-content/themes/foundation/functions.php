@@ -147,24 +147,24 @@
 
 	add_action( 'init', 'create_all_post_types' );
 	function create_all_post_types() {
-		// Communicados / Press Releases
+		// Comunicados / Press Releases
 		register_post_type( 'opc_communicado',
 			array(
 				'labels' => array(
-					'name' => __( 'Communicados' ), // general name for the post type, usually plural. The same as, and overridden by $post_type_object->label
-					'singular_name' => __( 'Communicado' ), // name for one object of this post type. Defaults to value of name
-					'menu_name' => __( 'Communicados' ), // the menu name text. This string is the name to give menu items. Defaults to value of name
-					'all_items' => __( 'Communicados' ), //  the all items text used in the menu. Default is the Name label
-					'add_new' => __( 'Add New Communicado' ), //  the add new text. The default is Add New for both hierarchical and non-hierarchical types. When internationalizing this string, please use a gettext context matching your post type. Example: _x('Add New', 'product');
-					'add_new_item' => __( 'Add New Communicado' ), // the add new item text. Default is Add New Post/Add New Page
-					'edit_item' => __( 'Edit Communicado' ), // the edit item text. Default is Edit Post/Edit Page
-					'new_item' => __( 'New Communicado' ), // the new item text. Default is New Post/New Page
-					'view_item' => __( 'View communicado' ), // the view item text. Default is View Post/View Page
-					'search_items' => __( 'Search Communicados' ), // the search items text. Default is Search Posts/Search Pages
-					'not_found' => __( 'No Communicados found' ), // the not found text. Default is No posts found/No pages found
-					'not_found_in_trash' => __( 'No Communicados Found in Trash' ), //  the not found in trash text. Default is No posts found in Trash/No pages found in Trash
+					'name' => __( 'Comunicados' ), // general name for the post type, usually plural. The same as, and overridden by $post_type_object->label
+					'singular_name' => __( 'Comunicado' ), // name for one object of this post type. Defaults to value of name
+					'menu_name' => __( 'Comunicados' ), // the menu name text. This string is the name to give menu items. Defaults to value of name
+					'all_items' => __( 'Comunicados' ), //  the all items text used in the menu. Default is the Name label
+					'add_new' => __( 'Add New Comunicado' ), //  the add new text. The default is Add New for both hierarchical and non-hierarchical types. When internationalizing this string, please use a gettext context matching your post type. Example: _x('Add New', 'product');
+					'add_new_item' => __( 'Add New Comunicado' ), // the add new item text. Default is Add New Post/Add New Page
+					'edit_item' => __( 'Edit Comunicado' ), // the edit item text. Default is Edit Post/Edit Page
+					'new_item' => __( 'New Comunicado' ), // the new item text. Default is New Post/New Page
+					'view_item' => __( 'View comunicado' ), // the view item text. Default is View Post/View Page
+					'search_items' => __( 'Search Comunicados' ), // the search items text. Default is Search Posts/Search Pages
+					'not_found' => __( 'No Comunicados found' ), // the not found text. Default is No posts found/No pages found
+					'not_found_in_trash' => __( 'No Comunicados Found in Trash' ), //  the not found in trash text. Default is No posts found in Trash/No pages found in Trash
 				),
-			'description' => 'Communicados/Press Releases contain a title, text, a featuted image and a featured PDF',
+			'description' => 'Comunicados/Press Releases contain a title, text, a featuted image and a featured PDF',
 			'public' => true,
 			'hierarchical' => true,
 			'has_archive' => true,
