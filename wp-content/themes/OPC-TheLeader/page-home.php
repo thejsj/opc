@@ -10,7 +10,7 @@ get_header(); ?>
 	<!-- List of Communicados Begins -->
 	<div class="page-content sidebar-position-without responsive-sidebar-bottom">
 		<div class="row">
-			<div class="content span9">
+			<div class="content span9 text-center">
 				<h2 class='comunicados-title'><?php echo get_custom_text('home_page_communicados_text'); ?></h2>
 				<?php $the_query = get_latest_communicados(); ?>
 				<!-- Show Posts -->
@@ -53,10 +53,8 @@ get_header(); ?>
 					<h2>Sorry!</h2>
 					<p>No posts have been published just yet.</p>	
 				<?php endif;?>
-			</div>
-			<!-- List all Sponsors -->
-			<div class='span3 content'>
-				<div class="all-sponsors gray-box">
+				<!-- List all Sponsors -->
+				<div class="all-sponsors">
 					<?php $ordered_posts = get_sponsors(); ?>
 					<?php $sponsor_types = get_sponsor_types(); ?>
 					<?php foreach($ordered_posts as $key => $category){ ?>
@@ -65,31 +63,37 @@ get_header(); ?>
 						<?php foreach($category as $post){ ?>
 						<div class="single-sponsor">
 							<h4><?php echo $post->post_title; ?><h4>
-							<img src='<?php echo $post->sponsor_image; ?>' >
+							<div class="img-container">
+								<img src='<?php echo $post->sponsor_image; ?>' >
+							</div>
 						</div>
 						<?php } ?>
 					</div>
 					<?php } ?>
 				</div>
-			</div>
-			<!-- End Sponsors -->
+				<!-- End Sponsors -->
+			</div>			
 		</div>
 	</div>	
 
 	<!-- List all videos -->
 	<div class="page-content video-container">
 		<div class="row">
-			<div class="content span12">
+			<div class="content span9 text-center">
 				<h3><?php echo get_custom_text('home_page_videos_title'); ?></h3>
 			</div>
-			<div class="content span12">
+			<div class="content span9 text-center">
+				<div class="row">
 				<?php $all_videos = get_videos(5); ?>
 				<?php foreach($all_videos as $post){ ?>
-				<div class="single-video span3">
-					<?php echo generate_youtube_embed_code($post->youtube_id, 270, 200); ?>
-					<h4><?php echo $post->post_title; ?></h4>
-				</div>
+
+					<div class="single-video span2">
+						<?php echo generate_youtube_embed_code($post->youtube_id, 200, 160); ?>
+						<h4><?php echo $post->post_title; ?></h4>
+					</div>
+				
 				<?php } ?>
+				</div>
 				<!-- End List al videos -->
 			</div>
 		</div>
