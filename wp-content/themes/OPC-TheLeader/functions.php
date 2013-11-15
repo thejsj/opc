@@ -570,6 +570,14 @@ include(TEMPLATEPATH . '/leader_functions.php');
   				return "Nuestros Últimos Comunicados"; 
   			}
   		}
+  		else if($type == 'home_page_sponsors_text'){
+  			if(get_site_option('home_page_sponsors_text') != ''){
+  				return get_site_option('home_page_sponsors_text'); 
+  			}
+  			else {
+  				return "Nuestros Auspiciadores"; 
+  			}
+  		}
   		else if($type == 'home_page_sponsor_0'){
   			if(get_site_option('home_page_sponsor_0') != ''){
   				return get_site_option('home_page_sponsor_0'); 
@@ -653,6 +661,7 @@ include(TEMPLATEPATH . '/leader_functions.php');
 		register_setting( 'opc-settings-group', 'youtube_link' );
 		register_setting( 'opc-settings-group', 'home_page_videos_title' );
 		register_setting( 'opc-settings-group', 'home_page_comunicados_text' );
+		register_setting( 'opc-settings-group', 'home_page_sponsors_text' );
 		register_setting( 'opc-settings-group', 'home_page_sponsor_0' );
 		register_setting( 'opc-settings-group', 'home_page_sponsor_1' );
 		register_setting( 'opc-settings-group', 'home_page_sponsor_2' );
@@ -687,9 +696,15 @@ include(TEMPLATEPATH . '/leader_functions.php');
 		</table>
 		<h4>Customize Text Snippets</h4>
 		<table class="form-table">
+
 			<tr valign="top">
 			<th scope="row">Home Page Communicados Title ('NUESTROS ÚLTIMOS COMUNICADOS')</th>
 			<td><input type="text" name="home_page_comunicados_text" value="<?php echo get_option('home_page_comunicados_text'); ?>" /></td>
+			</tr>
+
+			<tr valign="top">
+			<th scope="row">Home Page Sponsors Title ('NUESTROS AUSPICIADORES')</th>
+			<td><input type="text" name="home_page_sponsors_text" value="<?php echo get_option('home_page_sponsors_text'); ?>" /></td>
 			</tr>
 			 
 			<tr valign="top">

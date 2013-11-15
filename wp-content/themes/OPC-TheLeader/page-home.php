@@ -55,6 +55,7 @@ get_header(); ?>
 				<?php endif;?>
 				<!-- List all Sponsors -->
 				<div class="all-sponsors">
+					<h2 class='comunicados-title'><?php echo get_custom_text('home_page_sponsors_text'); ?></h2>
 					<?php $ordered_posts = get_sponsors(); ?>
 					<?php $sponsor_types = get_sponsor_types(); ?>
 					<?php foreach($ordered_posts as $key => $category){ ?>
