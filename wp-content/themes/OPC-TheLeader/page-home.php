@@ -73,31 +73,22 @@ get_header(); ?>
 					<?php } ?>
 				</div>
 				<!-- End Sponsors -->
+				<div class="video-container">
+					<!-- List all videos -->
+					<h3><?php echo get_custom_text('home_page_videos_title'); ?></h3>
+					<div class="row">
+					<?php $all_videos = get_videos(5); ?>
+					<?php foreach($all_videos as $post){ ?>
+						<div class="single-video span2">
+							<?php echo generate_youtube_embed_code($post->youtube_id, 200, 160); ?>
+							<h4><?php echo $post->post_title; ?></h4>
+						</div>
+					<?php } ?>
+					</div>
+					<!-- End List al videos -->
+				</div>
 			</div>			
 		</div>
 	</div>	
-
-	<!-- List all videos -->
-	<div class="page-content video-container">
-		<div class="row">
-			<div class="content span9 text-center">
-				<h3><?php echo get_custom_text('home_page_videos_title'); ?></h3>
-			</div>
-			<div class="content span9 text-center">
-				<div class="row">
-				<?php $all_videos = get_videos(5); ?>
-				<?php foreach($all_videos as $post){ ?>
-
-					<div class="single-video span2">
-						<?php echo generate_youtube_embed_code($post->youtube_id, 200, 160); ?>
-						<h4><?php echo $post->post_title; ?></h4>
-					</div>
-				
-				<?php } ?>
-				</div>
-				<!-- End List al videos -->
-			</div>
-		</div>
-	</div>
 </section>
 <?php get_footer(); ?>
