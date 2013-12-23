@@ -155,6 +155,11 @@ jQuery(document).ready(function($){
         itemSelector: '.post-grid'
     });    
 
+    // This is HORRIBLE
+    // I KNOW!
+    // But Currently, i'm feeling pretty lazy 
+    // JSJ
+
     setTimeout(function(){
         $blog.isotope( 'reLayout', function(){
             console.log("reLayout");
