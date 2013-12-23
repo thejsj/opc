@@ -31,6 +31,10 @@
 									<a href="<?php the_permalink(); ?>">
 										<img src="<?php echo get_communicados_featured_image(get_the_ID(), 'full'); ?>" alt='<?php the_title();?>'>
 									</a>
+								<?php else: ?>
+									<a href="<?php the_permalink(); ?>">
+										<img src="<?php echo get_bloginfo('stylesheet_directory'); ?>img/Overseas-Press-Club-Puerto-Rico-Logo-200.png" alt='<?php the_title();?>'>
+									</a>
 								<?php endif; ?>
 								<div class="blog-mask">
 									<div class="mask-content">
