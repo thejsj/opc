@@ -33,7 +33,7 @@
 									</a>
 								<?php else: ?>
 									<a href="<?php the_permalink(); ?>">
-										<img src="<?php echo get_bloginfo('stylesheet_directory'); ?>img/Overseas-Press-Club-Puerto-Rico-Logo-200.png" alt='<?php the_title();?>'>
+										<img src="<?php echo get_bloginfo('stylesheet_directory'); ?>/img/Overseas-Press-Club-Puerto-Rico-Logo-200.png" alt='<?php the_title();?>'>
 									</a>
 								<?php endif; ?>
 								<div class="blog-mask">
