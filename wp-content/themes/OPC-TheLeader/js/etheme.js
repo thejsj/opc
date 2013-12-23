@@ -155,6 +155,12 @@ jQuery(document).ready(function($){
         itemSelector: '.post-grid'
     });    
 
+    setTimeout(function(){
+        $blog.isotope( 'reLayout', function(){
+            console.log("reLayout");
+        } )
+    }, 500); 
+
     $(window).smartresize(function(){
         $blog.isotope({ 
             itemSelector: '.post-grid'
