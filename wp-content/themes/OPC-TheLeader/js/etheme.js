@@ -161,6 +161,18 @@ jQuery(document).ready(function($){
         } )
     }, 500); 
 
+    setTimeout(function(){
+        $blog.isotope( 'reLayout', function(){
+            console.log("reLayout");
+        } )
+    }, 1000); 
+
+    setTimeout(function(){
+        $blog.isotope( 'reLayout', function(){
+            console.log("reLayout");
+        } )
+    }, 1500); 
+
     $(window).smartresize(function(){
         $blog.isotope({ 
             itemSelector: '.post-grid'
