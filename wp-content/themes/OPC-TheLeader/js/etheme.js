@@ -114,6 +114,8 @@ jQuery(document).ready(function($){
 
     $portfolio = $('.masonry');
     
+
+
     $portfolio.isotope({ 
         itemSelector: '.portfolio-item'
     });    
@@ -146,6 +148,8 @@ jQuery(document).ready(function($){
     // **********************************************************************// 
     
     $blog = $('.blog-masonry');
+
+    console.log("Mansonry");
 
     $blog.isotope({ 
         itemSelector: '.post-grid'
