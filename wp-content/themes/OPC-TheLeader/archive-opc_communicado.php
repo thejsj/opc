@@ -24,9 +24,13 @@
 						<article class="post-<?php the_ID(); ?> post type-post status-publish format-standard hentry category-uncategorized blog-post post-grid span4 isotope-item" id="post-<?php the_ID(); ?>">
 							<div class="post-images">
 								<?php if(get_communicados_featured_image(get_the_ID(), 'small')): ?>
-								<a href="<?php the_permalink(); ?>">
-									<img src="<?php echo get_communicados_featured_image(get_the_ID(), 'small'); ?>" alt='<?php the_title();?>'>
-								</a>
+									<a href="<?php the_permalink(); ?>">
+										<img src="<?php echo get_communicados_featured_image(get_the_ID(), 'small'); ?>" alt='<?php the_title();?>'>
+									</a>
+								<?php elseif(get_communicados_featured_image(get_the_ID(), 'full')): ?>
+									<a href="<?php the_permalink(); ?>">
+										<img src="<?php echo get_communicados_featured_image(get_the_ID(), 'full'); ?>" alt='<?php the_title();?>'>
+									</a>
 								<?php endif; ?>
 								<div class="blog-mask">
 									<div class="mask-content">
